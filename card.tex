@@ -1,0 +1,80 @@
+% BUSINESS CARD template
+% created by Karol Kozioł (www.karol-koziol.net)
+% for ShareLaTeX - online LaTeX editor (www.sharelatex.com)
+% May 2013
+
+\documentclass[10pt]{article}
+\usepackage[dvips]{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+\usepackage{geometry}
+\geometry{total={210mm,297mm},hmargin=10mm,vmargin=2mm}
+
+\pagestyle{empty}
+
+\renewcommand\familydefault{\sfdefault}
+\usepackage{tgadventor}
+
+%%% BUSINESS CARD SIZE
+\newlength{\cardw}
+\newlength{\cardh}
+%% ISO 7810 size: 85.60mm × 53.98mm
+\setlength{\cardw}{85.60mm}
+\setlength{\cardh}{53.98mm}
+%% European size: 85mm × 55mm
+%\setlength{\cardw}{85mm}
+%\setlength{\cardh}{55mm}
+%% US size: 3.5 in × 2 in
+%\setlength{\cardw}{3.5in}
+%\setlength{\cardh}{2in}
+
+
+%%% DEFINE USER DATA
+\newcommand{\Name}{
+{\LARGE \textbf{David Thonnard}}
+}%
+\newcommand{\Description}{
+{\large \textbf{Neuroscientist}}
+}%
+\newcommand{\ExtraDescription}{
+	{\large \textbf{Data Analyst}}
+}%
+\newcommand{\Email}{
+thonnard.david@gmail.com
+}%
+\newcommand{\Phone}{
++32 498075651
+}%
+\newcommand{\Event}{
+	{\large \textbf{BCF Career Event - Ghent 2019}}
+}%
+%%%
+
+
+\begin{document}
+
+\begin{tikzpicture}
+% grid
+\foreach \i in {0,1,2,3,4,5} \draw[very thin, gray,dashed] (0,\i*\cardh) -- (2*\cardw,\i*\cardh);
+\foreach \j in {0,1,2} \draw[very thin, gray,dashed] (\j*\cardw,0) -- (\j*\cardw,5*\cardh);
+% card content
+\foreach \i in {0,1} \foreach \j in {0,1,2,3,4} {
+% event
+   \node[right] at (\i*\cardw+0.083\cardw,\j*\cardh+0.80\cardh) {\Event};
+% line
+   \draw[line width=0.6mm] (\i*\cardw+0.1\cardw,\j*\cardh+0.75\cardh) -- (\i*\cardw+0.9\cardw,\j*\cardh+0.75\cardh);
+% QR code
+   \node at (\i*\cardw+0.2\cardw,\j*\cardh+0.50\cardh) {\includegraphics[width=0.2\cardw]{qr}};
+% center text
+   \node[right,black!25!gray] at (\i*\cardw+0.35\cardw,\j*\cardh+0.65\cardh) {\Name};
+   \node[right] at (\i*\cardw+0.35\cardw,\j*\cardh+0.50\cardh) {\Description};
+   \node[right] at (\i*\cardw+0.35\cardw,\j*\cardh+0.40\cardh) {\ExtraDescription};
+   \node[left] at (\i*\cardw+.92\cardw,\j*\cardh+0.20\cardh) {\Phone};
+   \node[left] at (\i*\cardw+0.92\cardw,\j*\cardh+0.10\cardh) {\Email};
+};
+\end{tikzpicture}
+
+\end{document}
